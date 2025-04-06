@@ -1,0 +1,41 @@
+name: CI/CD Pipeline - Build, Push & Deploy Flask App
+
+on:
+  push:
+    branches:
+      - release
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Login to DockerHub
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+        run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+
+      - name: Build the Docker Image
+        run: docker build -t isankasuresh/test .
+
+      - name: Push the Docker Image to DockerHub
+        run: docker push isankasuresh/test:latest
+
+      - name: SSH into EC2 and Deploy Docker Container
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.EC2_PUBLIC_IP }}
+          username: ec2-user
+          key: ${{ secrets.EC2_SSH_PRIVATE_KEY }}
+          script: |
+            echo "✅ Stopping and removing old container..."
+            docker stop test || true
+            docker rm test || true
+            echo "📥 Pulling latest image from DockerHub..."
+            docker pull isankasuresh/test:latest
+            echo "🚀 Running new container..."
+            docker run -d -p 8080:8080 --name test isankasuresh/test:latest
