@@ -14,73 +14,114 @@
     />
     <style>
       body {
-        background: #1c1c1e;
-        color: #ffffff;
-        font-family: "Poppins", sans-serif;
+        background-color: #f5f7fa;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        color: #333;
       }
+    
       .navbar {
-        background: #121212;
-        padding: 16px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+        background-color: #ffffff;
+        padding: 1rem 2rem;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        display: flex;
+        align-items: center;
       }
+    
       .navbar-brand {
-        font-weight: 600;
-        font-size: 18px;
-        color: #00ffaa !important;
-      }
-      .container {
-        max-width: 550px;
-        margin-top: 50px;
-      }
-      .card {
-        background: #2a2a2c;
-        border-radius: 12px;
-        padding: 24px;
-        box-shadow: 0 0 12px rgba(0, 255, 170, 0.2);
-      }
-      .form-label {
-        font-weight: 500;
-      }
-      .form-control,
-      .form-select {
-        background: #1f1f1f;
-        color: #ffffff;
-        border: 1px solid #00ffaa;
-        border-radius: 8px;
-      }
-      .form-control:focus,
-      .form-select:focus {
-        background: #1f1f1f;
-        color: #ffffff;
-        border-color: #00ffaa;
-        box-shadow: 0 0 5px #00ffaa;
-      }
-      .btn {
-        width: 100%;
-        padding: 12px;
-        font-size: 16px;
+        font-size: 1.2rem;
         font-weight: bold;
-        background: none;
-        border: 2px solid #00ffaa;
-        color: #00ffaa;
+        color: #0077cc;
+        text-decoration: none;
+      }
+    
+      .container {
+        max-width: 600px;
+        margin: 3rem auto;
+        padding: 1rem;
+      }
+    
+      .card {
+        background-color: #ffffff;
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      }
+    
+      .text-center {
+        text-align: center;
+      }
+    
+      .mb-4 {
+        margin-bottom: 1.5rem;
+      }
+    
+      .form-label {
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        display: block;
+        color: #555;
+      }
+    
+      .form-control, .form-select {
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid #ccc;
         border-radius: 8px;
-        transition: all 0.3s ease;
+        margin-bottom: 1rem;
+        font-size: 1rem;
+        background-color: #fdfdfd;
+        transition: border-color 0.3s ease;
       }
+    
+      .form-control:focus, .form-select:focus {
+        border-color: #0077cc;
+        outline: none;
+        background-color: #fff;
+      }
+    
+      .btn {
+        background-color: #0077cc;
+        color: #ffffff;
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        transition: background-color 0.3s ease;
+        width: 100%;
+      }
+    
       .btn:hover {
-        background: #00ffaa;
-        color: #000;
+        background-color: #005fa3;
       }
-      .alert {
-        background-color: #121212;
-        border: 1px solid #00ffaa;
-        border-radius: 6px;
-        margin-top: 16px;
-      }
+    
       .spinner-border {
-        border: 2px solid #00ffaa;
-        border-right-color: transparent;
+        width: 1rem;
+        height: 1rem;
+        border-width: 0.15em;
+        margin-right: 0.5rem;
       }
-    </style>
+    
+      .d-none {
+        display: none;
+      }
+    
+      .mt-3 {
+        margin-top: 1rem;
+      }
+    
+      #result {
+        text-align: center;
+        font-weight: 600;
+        font-size: 1.2rem;
+        color: #007700;
+      }
+    </style>    
   </head>
   <body>
     <nav class="navbar">
